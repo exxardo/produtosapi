@@ -1,12 +1,29 @@
 package com.eduardoramiro.produtosapi.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 /**
  * Classe que representa os dados de um produto.
+ * A anotação @Entity indica que a classe é uma entidade do banco de dados.
+ * A anotação @Table indica o nome da tabela no banco de dados.
+ * A anotação @Column indica o nome da coluna no banco de dados.
+ * A anotação @Id indica que o atributo é a chave primária da tabela.
  */
+@Entity
+@Table(name = "tb_produtos") // Define o nome da tabela no banco de dados que será criada. Está entre aspas porque o nome da tabela é diferente do nome da classe.
 public class Produto {
+
+    @Id
+    @Column
     private String id;
+    @Column
     private String nomeProduto;
+    @Column
     private String descricaoProduto;
+    @Column
     private double precoProduto;
 
     public String getId() {
