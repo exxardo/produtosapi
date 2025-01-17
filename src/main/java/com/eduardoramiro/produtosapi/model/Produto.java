@@ -58,6 +58,10 @@ public class Produto {
         this.precoProduto = precoProduto;
     }
 
+    /**
+     * Método que retorna uma representação textual do objeto.
+     * @return uma representação textual do objeto.
+     */
     @Override
     public String toString() {
         return "Produto{" +

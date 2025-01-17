@@ -3,8 +3,6 @@ package com.eduardoramiro.produtosapi.controller;
 import com.eduardoramiro.produtosapi.model.Produto;
 import com.eduardoramiro.produtosapi.repository.ProdutoRepository;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -52,8 +50,23 @@ public class ProdutoController {
         return produtoRepository.findById(id).orElse(null);
     }
 
+    /**
+     * Método que recebe uma requisição DELETE para deletar um produto pelo id.
+     * @param id refere-se ao id do produto a ser deletado.
+     */
     @DeleteMapping("/{id}")
     public void deletarProdutoID(@PathVariable("id") String id) {
         produtoRepository.deleteById(id);
+    }
+
+    /**
+     * Método que recebe uma requisição PUT para atualizar um produto pelo id.
+     * @param id refere-se ao id do produto a ser atualizado.
+     * @param produtoInformado refere-se ao produto a ser atualizado que foi informado atrvés do endpoint.
+     */
+    @PutMapping("/{id}")
+    public void atualizarProdutoId(@PathVariable("id") String id, @RequestBody Produto produtoInformado) {
+        produtoInformado.setId(id);
+        produtoRepository.save(produtoInformado);
     }
 }
