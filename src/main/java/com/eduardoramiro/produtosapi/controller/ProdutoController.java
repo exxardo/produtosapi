@@ -2,10 +2,9 @@ package com.eduardoramiro.produtosapi.controller;
 
 import com.eduardoramiro.produtosapi.model.Produto;
 import com.eduardoramiro.produtosapi.repository.ProdutoRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -40,5 +39,12 @@ public class ProdutoController {
         produtoRepository.save(produtoInformado);
 
         return produtoInformado;
+    }
+
+    @GetMapping("/{id}") // Está entre chaves porque é um parâmetro da URL.
+    public Produto obterProdutoId(@PathVariable("id") String id) {
+        // Optional<Produto> produto = produtoRepository.findById(id);
+        // return produto.isPresent() ? produto.get() : null;
+        return produtoRepository.findById(id).orElse(null);
     }
 }
