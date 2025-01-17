@@ -2,10 +2,7 @@ package com.eduardoramiro.produtosapi.controller;
 
 import com.eduardoramiro.produtosapi.model.Produto;
 import com.eduardoramiro.produtosapi.repository.ProdutoRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 /**
@@ -40,5 +37,36 @@ public class ProdutoController {
         produtoRepository.save(produtoInformado);
 
         return produtoInformado;
+    }
+
+    /**
+     * Método que recebe uma requisição GET para obter um produto pelo id.
+     * @param id refere-se ao id do produto a ser obtido.
+     */
+    @GetMapping("/{id}") // Está entre chaves porque é um parâmetro da URL.
+    public Produto obterProdutoId(@PathVariable("id") String id) {
+        // Optional<Produto> produto = produtoRepository.findById(id);
+        // return produto.isPresent() ? produto.get() : null;
+        return produtoRepository.findById(id).orElse(null);
+    }
+
+    /**
+     * Método que recebe uma requisição DELETE para deletar um produto pelo id.
+     * @param id refere-se ao id do produto a ser deletado.
+     */
+    @DeleteMapping("/{id}")
+    public void deletarProdutoID(@PathVariable("id") String id) {
+        produtoRepository.deleteById(id);
+    }
+
+    /**
+     * Método que recebe uma requisição PUT para atualizar um produto pelo id.
+     * @param id refere-se ao id do produto a ser atualizado.
+     * @param produtoInformado refere-se ao produto a ser atualizado que foi informado atrvés do endpoint.
+     */
+    @PutMapping("/{id}")
+    public void atualizarProdutoId(@PathVariable("id") String id, @RequestBody Produto produtoInformado) {
+        produtoInformado.setId(id);
+        produtoRepository.save(produtoInformado);
     }
 }
