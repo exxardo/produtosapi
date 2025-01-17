@@ -41,10 +41,19 @@ public class ProdutoController {
         return produtoInformado;
     }
 
+    /**
+     * Método que recebe uma requisição GET para obter um produto pelo id.
+     * @param id refere-se ao id do produto a ser obtido.
+     */
     @GetMapping("/{id}") // Está entre chaves porque é um parâmetro da URL.
     public Produto obterProdutoId(@PathVariable("id") String id) {
         // Optional<Produto> produto = produtoRepository.findById(id);
         // return produto.isPresent() ? produto.get() : null;
         return produtoRepository.findById(id).orElse(null);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletarProdutoID(@PathVariable("id") String id) {
+        produtoRepository.deleteById(id);
     }
 }
