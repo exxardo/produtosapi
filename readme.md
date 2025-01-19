@@ -216,4 +216,6 @@ Durante o desenvolvimento desta API, foram aprofundados conhecimentos sobre:
 - Uso do padrão Repository para abstração do acesso a dados.
 - Boas práticas em documentação técnica, como uso de Swagger/OpenAPI para descrever endpoints.
 
-Essa documentação visa oferecer uma visão clara do projeto e facilitar sua utilização e contribuição futura!
+## Contato
+
+Para dúvidas ou sugestões, entre em contato através do meu [LinkedIn](https://www.linkedin.com/in/eduardoramiro).
